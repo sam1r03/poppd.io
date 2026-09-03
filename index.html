@@ -29,11 +29,32 @@
   .shots { display:grid; grid-template-columns:repeat(3, 1fr); gap:.75rem; align-items:end; }
   .shots img { width:100%; height:auto; border-radius:18px; border:1px solid var(--line); display:block; }
   .shots img:nth-child(2) { transform:translateY(-14px); }
-  .features { display:grid; grid-template-columns:1fr; gap:1.25rem 2rem; margin:4rem 0 0; padding-top:2.5rem; border-top:1px solid var(--line); }
+  .features { display:grid; grid-template-columns:1fr; gap:1.25rem 2rem; margin:3rem 0 0; padding-top:2.5rem; border-top:1px solid var(--line); }
   @media (min-width:640px) { .features { grid-template-columns:repeat(3, 1fr); } }
   .features h2 { font-size:1.05rem; margin:0 0 .3rem; }
   .features p { margin:0; color:var(--muted); font-size:.98rem; }
   .features .k { color:var(--gold); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:.45rem; }
+  .scale { margin:4rem 0 0; padding:2.5rem 0 0; border-top:1px solid var(--line); text-align:center; }
+  .scale h2 { font-size:1.6rem; margin:0 0 .4rem; letter-spacing:-.01em; }
+  .scale p { color:var(--muted); margin:0 auto 1.8rem; max-width:34rem; }
+  .kernels { display:flex; justify-content:center; gap:.5rem; flex-wrap:wrap; }
+  .kernels figure { margin:0; width:clamp(88px, 16vw, 150px); }
+  .kernels img { width:100%; height:auto; display:block; transition:transform .25s ease; }
+  .kernels figure:hover img { transform:translateY(-6px) scale(1.06); }
+  .kernels figcaption { font-size:.85rem; color:var(--muted); margin-top:.4rem; }
+  .kernels figure:last-child figcaption { color:var(--gold); }
+  .ai { margin:4rem 0 0; padding:2.5rem 1.5rem; border:1px solid var(--line); border-radius:22px; display:grid; grid-template-columns:1fr; gap:1.5rem; align-items:center;
+        background:radial-gradient(60% 120% at 12% 50%, rgba(232,197,121,.16), transparent 60%), #121110; }
+  @media (min-width:640px) { .ai { grid-template-columns:auto 1fr; gap:2rem; padding:2.5rem 2.5rem; } }
+  .orb { width:clamp(96px, 14vw, 140px); height:auto; filter:drop-shadow(0 0 28px rgba(232,197,121,.45)); }
+  @media (prefers-reduced-motion: no-preference) { .orb { animation:breathe 4s ease-in-out infinite; } }
+  @keyframes breathe { 0%,100% { filter:drop-shadow(0 0 22px rgba(232,197,121,.35)); } 50% { filter:drop-shadow(0 0 40px rgba(232,197,121,.6)); } }
+  .ai .k { color:var(--gold); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:.45rem; }
+  .ai h2 { font-size:1.6rem; margin:0 0 .6rem; letter-spacing:-.01em; }
+  .ai h2 b { color:var(--gold); font-weight:700; }
+  .ai p { margin:0; color:var(--muted); max-width:40rem; }
+  .ai ul { margin:.9rem 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:.5rem; }
+  .ai li { font-size:.85rem; border:1px solid var(--line); border-radius:999px; padding:.3rem .75rem; color:var(--ink); }
   footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
   footer nav { margin-bottom:.8rem; }
   footer a { color:var(--gold); text-decoration:none; }
@@ -58,8 +79,29 @@
     </div>
   </section>
 
+  <section class="scale" aria-labelledby="scale-h">
+    <h2 id="scale-h">Five pops. No essays.</h2>
+    <p>The popcorn scale: tap one, or hold and feel it pop. Ten seconds a movie, and every one sharpens your taste profile.</p>
+    <div class="kernels">
+      <figure><img src="/assets/kernel-1.png" alt="Unpopped kernel" width="256" height="256"><figcaption>Unpopped</figcaption></figure>
+      <figure><img src="/assets/kernel-2.png" alt="Cracked kernel" width="256" height="256"><figcaption>Cracked</figcaption></figure>
+      <figure><img src="/assets/kernel-3.png" alt="Barely popped kernel" width="256" height="256"><figcaption>Barely</figcaption></figure>
+      <figure><img src="/assets/kernel-4.png" alt="Popped popcorn" width="256" height="256"><figcaption>Popped</figcaption></figure>
+      <figure><img src="/assets/kernel-5.png" alt="Fully popped popcorn" width="256" height="256"><figcaption>Perfection</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="ai" aria-labelledby="ai-h">
+    <img class="orb" src="/assets/ai-orb.png" alt="" width="256" height="256">
+    <div>
+      <h2 id="ai-h">Twenty ratings in, <b>poppdAI</b> reads you.</h2>
+      <p>It turns your ratings into a taste profile written in plain English, finds movies from a mood or a title you name, and hands you a fresh set of top picks every couple of weeks. The ranking underneath stays honest: your ratings and people like you, not a black box.</p>
+      <ul><li>Your taste, in words</li><li>AI search by mood or movie</li><li>Top picks, refreshed</li></ul>
+    </div>
+  </section>
+
   <section class="features">
-    <div><span class="k">Rate</span><h2>Five pops, no essays</h2><p>From Not Worth the Popcorn to Popcorn Perfection. Tap or hold. Every rating sharpens your taste profile.</p></div>
+    <div><span class="k">Track</span><h2>Watchlist and tier boards</h2><p>Save what's next, and rank curated collections from S to D. Your profile becomes a taste identity that evolves as you rate.</p></div>
     <div><span class="k">Discover</span><h2>A score and a reason</h2><p>"Because you loved Arrival" beats "trending now". Every pick shows why it's yours.</p></div>
     <div><span class="k">People</span><h2>Find your taste twin</h2><p>Real people whose ratings line up with yours: what you both loved, and where you fought.</p></div>
   </section>
