@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Poppd knows what you'll like</title>
+<meta name="description" content="Poppd learns how you rate, not how everyone rates: a taste profile built from your popcorn ratings, calibrated to you, backed by real people who share your taste, and a straight answer from poppdAI on any movie.">
+<meta property="og:title" content="How Poppd knows what you'll like">
+<meta property="og:description" content="It learns how you rate, not how everyone rates.">
+<meta property="og:image" content="https://poppd.io/assets/01-home.jpg">
+<meta property="og:url" content="https://poppd.io/how-it-works/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="apple-itunes-app" content="app-id=6799650743">
+<link rel="icon" href="/assets/favicon.png">
+<style>
+  :root { color-scheme: dark; --bg:#0D0D0D; --ink:#f5f0e8; --muted:#b8b0a4; --gold:#e8c579; --line:#2a2620; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system, system-ui, "Segoe UI", sans-serif; line-height:1.55; }
+  main { max-width:1040px; margin:0 auto; padding:2.5rem 1.25rem 2rem; }
+  .top { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:2.5rem; }
+  .top a.home { color:var(--muted); text-decoration:none; font-size:.95rem; }
+  .top a.home:hover { color:var(--ink); }
+  .wordmark { width:min(150px, 40%); height:auto; display:block; }
+  .k { color:var(--gold); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:.45rem; }
+  h1 { font-size:clamp(2rem, 4.6vw, 3rem); line-height:1.08; margin:0 0 .8rem; letter-spacing:-.01em; text-wrap:balance; max-width:22ch; }
+  h1 em { font-style:normal; color:var(--gold); }
+  .lede { font-size:1.15rem; color:var(--muted); margin:0 0 1.2rem; max-width:36rem; }
+  .badge { display:inline-block; line-height:0; }
+  .badge img { height:52px; width:auto; }
+  .step { display:grid; grid-template-columns:1fr; gap:1.5rem; align-items:center; margin:3.5rem 0 0; padding-top:2.5rem; border-top:1px solid var(--line); }
+  @media (min-width:760px) { .step { grid-template-columns:1.15fr 1fr; gap:3rem; } .step.flip > .text { order:2; } }
+  .step h2 { font-size:clamp(1.45rem, 2.6vw, 1.9rem); margin:0 0 .6rem; letter-spacing:-.01em; text-wrap:balance; }
+  .step h2 b { color:var(--gold); font-weight:700; }
+  .step p { margin:0 0 .8rem; color:var(--muted); max-width:38rem; font-size:1.02rem; }
+  .step p:last-child { margin-bottom:0; }
+  .shot { margin:0; }
+  .shot img { width:100%; height:auto; display:block; border-radius:18px; border:1px solid var(--line); }
+  .shot.phone { max-width:340px; justify-self:center; }
+  .shot figcaption { font-size:.82rem; color:var(--muted); margin-top:.5rem; text-align:center; }
+  .orbline { display:flex; align-items:center; gap:.8rem; margin-bottom:.6rem; }
+  .orbline img { width:44px; height:44px; filter:drop-shadow(0 0 18px rgba(232,197,121,.45)); }
+  .honest { margin:3.5rem 0 0; padding:1.8rem 1.6rem; border:1px solid var(--line); border-radius:22px;
+            background:radial-gradient(60% 120% at 12% 50%, rgba(232,197,121,.14), transparent 60%), #121110; }
+  .honest h2 { font-size:1.3rem; margin:0 0 .5rem; }
+  .honest p { color:var(--muted); margin:0; max-width:44rem; }
+  .cta { margin:3.5rem 0 0; padding-top:2.5rem; border-top:1px solid var(--line); text-align:center; }
+  .cta h2 { font-size:clamp(1.6rem, 3.4vw, 2.2rem); margin:0 0 .5rem; letter-spacing:-.01em; text-wrap:balance; }
+  .cta p { color:var(--muted); margin:0 auto 1.4rem; max-width:32rem; }
+  .fine { font-size:.85rem; color:var(--muted); margin:.9rem 0 0; }
+  footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
+  footer nav { margin-bottom:.8rem; }
+  footer a { color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <a href="/" aria-label="Poppd home"><img class="wordmark" src="/assets/wordmark.png" alt="Poppd"></a>
+    <a class="home" href="/">← Back</a>
+  </div>
+
+  <section>
+    <span class="k">How it works</span>
+    <h1>How Poppd knows <em>what you'll like</em></h1>
+    <p class="lede">It learns how you rate, not how everyone rates. Here's what happens between your first ten ratings and a recommendation you can trust.</p>
+    <a class="badge" href="/get?ct=how&amp;mt=8" aria-label="Download Poppd on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="250" height="83"></a>
+  </section>
+
+  <section class="step" aria-labelledby="s1">
+    <div class="text">
+      <span class="k">1 · Your ratings</span>
+      <h2 id="s1">It starts with <b>how you rate</b>, not what's popular.</h2>
+      <p>Every film you rate on the popcorn scale teaches Poppd something. Not just "liked it" or "didn't", but how strongly, which genres, which eras, whether you finished it.</p>
+      <p>Ten ratings is enough to start. Fifty and it knows you well.</p>
+    </div>
+    <figure class="shot phone"><img src="/assets/hiw-rate.jpg" alt="A movie page in Poppd with the five-stage popcorn rating control: Unpopped, Cracked, Barely, Popped, Perfection" width="900" height="1956" loading="lazy"><figcaption>One tap, or press and hold. Five levels of popped.</figcaption></figure>
+  </section>
+
+  <section class="step flip" aria-labelledby="s2">
+    <div class="text">
+      <span class="k">2 · Calibrated to you</span>
+      <h2 id="s2">A strong match means something <b>different for everyone</b>.</h2>
+      <p>Some people hand out Popcorn Perfection freely. Some almost never do. Poppd notices.</p>
+      <p>It checks its own predictions against the films you've already rated and works out what a strong match means for you specifically. A generous rater and a harsh one both get predictions that match how they'd actually score the film.</p>
+    </div>
+    <figure class="shot phone"><img src="/assets/03-profile.jpg" alt="A Poppd profile showing a taste identity badge and a poppdAI taste breakdown written in plain English" width="900" height="1956" loading="lazy"><figcaption>Your taste, as a badge and in plain English.</figcaption></figure>
+  </section>
+
+  <section class="step" aria-labelledby="s3">
+    <div class="text">
+      <span class="k">3 · Your people</span>
+      <h2 id="s3">It finds <b>real people</b> who rate like you.</h2>
+      <p>Poppd looks for users whose ratings line up with yours across the films you've both seen, and treats their opinions as evidence. When eighteen people with your taste loved a film you haven't seen, that counts for more than a million strangers liking it.</p>
+      <p>You'll see who agrees with you, and where you part ways.</p>
+    </div>
+    <figure class="shot phone"><img src="/assets/hiw-people.jpg" alt="The People tab in Poppd listing users with a taste match percentage against you" width="900" height="1956" loading="lazy"><figcaption>Taste matches, ranked by how closely they rate like you.</figcaption></figure>
+  </section>
+
+  <section class="step flip" aria-labelledby="s4">
+    <div class="text">
+      <div class="orbline"><img src="/assets/ai-orb.png" alt=""><span class="k" style="margin:0">4 · poppdAI</span></div>
+      <h2 id="s4">Then poppdAI gives you a <b>straight answer</b>.</h2>
+      <p>Open any film and ask <b>Will I like it?</b> poppdAI looks at the films you've loved and the ones you haven't, what your taste matches thought, and what it knows about the film itself: its tone, its pacing, who made it.</p>
+      <p>It tells you how you'd probably rate it, in your own popcorn levels, with two or three reasons in plain English. When it's guessing, it says so.</p>
+    </div>
+    <figure class="shot"><img src="/assets/hiw-verdict.jpg" alt="poppdAI's read on a film: three reasons in plain English referring to films the user loved" width="900" height="481" loading="lazy"><figcaption>poppdAI's read on Blade, for someone who loved Rush Hour and John Wick.</figcaption></figure>
+  </section>
+
+  <section class="step" aria-labelledby="s5">
+    <div class="text">
+      <span class="k">5 · The reasons</span>
+      <h2 id="s5">Every match comes <b>with its reasons</b>.</h2>
+      <p>No black box. Each recommendation shows why: the people who agreed, the films it reminds us of, the genres you rate highly.</p>
+      <p>If the reasons don't convince you, dismiss it. Poppd learns from that too.</p>
+    </div>
+    <figure class="shot phone"><img src="/assets/01-home.jpg" alt="The Poppd home screen with recommendation cards, each showing a match percentage and a one-line reason" width="900" height="1956" loading="lazy"><figcaption>Match, and why. On every card.</figcaption></figure>
+  </section>
+
+  <section class="honest" aria-labelledby="h-h">
+    <h2 id="h-h">What it doesn't do</h2>
+    <p>It doesn't pretend. A match score is a compatibility score, not a promise. Early on, with few ratings and few taste matches, Poppd says so and asks you to rate a few more. And the ranking underneath is always your ratings and people like you, never a black box deciding for you.</p>
+  </section>
+
+  <section class="cta">
+    <h2>Rate ten films. See what you're most likely to enjoy next.</h2>
+    <p>Free on iPhone. No streaming logins, no reviews to write, no algorithm you can't see.</p>
+    <a class="badge" href="/get?ct=how&amp;mt=8" aria-label="Download Poppd on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="250" height="83"></a>
+    <p class="fine">iPhone now. Android later.</p>
+  </section>
+
+  <footer>
+    <nav><a href="/">Home</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/support">Support</a> · <a href="https://instagram.com/poppd.io">Instagram</a></nav>
+    <p>This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+  </footer>
+</main>
+</body>
+</html>
