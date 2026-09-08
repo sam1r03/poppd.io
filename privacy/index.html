@@ -24,7 +24,7 @@
 <main>
 <nav><a href="/">poppd</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></nav>
 <h1>poppd — Privacy Policy</h1>
-<p><strong>Effective: 3 September 2026</strong></p>
+<p><strong>Effective: 8 September 2026</strong></p>
 <p>This page describes what the app actually does today, in plain language rather than boilerplate.
 Questions about anything here: <strong>privacy@poppd.io</strong>.</p>
 <hr />
@@ -85,7 +85,7 @@ stops them, and the app deletes the stored token the next time it runs.</p>
 <p><strong>Your taste identity is built only from film-taste signals.</strong> Which identity you get is decided
 by fixed rules from the list above — an AI model does not make that decision — so it cannot and
 does not infer anything about your religion, ethnicity, politics, sexuality, health or any other
-sensitive characteristic. Three optional features do use an AI model; §7.8 says exactly what they
+sensitive characteristic. Five optional features do use an AI model; §7.8 says exactly what they
 send and to whom.</p>
 <h3>Why we are allowed to use it</h3>
 <ul>
@@ -275,8 +275,8 @@ this matters to you, ask at <strong>privacy@poppd.io</strong>.</p>
 when you create an account — are delivered through Resend. To deliver them, Resend receives <strong>your
 email address and the contents of that message</strong>, and nothing else: no ratings, no profile text, no
 analytics. Our sender address is <strong>no-reply@poppd.io</strong>. We do not send marketing email.</p>
-<p><strong>7.8 Anthropic — AI wording, AI Search and AI-assisted home picks.</strong></p>
-<p>Three features send data to Anthropic (the maker of the Claude AI model). First, the short written
+<p><strong>7.8 Anthropic — AI wording, AI Search, AI-assisted home picks, and poppdAI reads of your ratings.</strong></p>
+<p>Five features send data to Anthropic (the maker of the Claude AI model). First, the short written
 description on your taste profile: it is generated when you view your own profile, and the model
 receives poppd-computed taste summaries (genre leanings, era leanings and similar aggregates)
 together with your current taste-identity label and traits, and turns them into sentences — it
@@ -291,7 +291,14 @@ taste best matches yours, chosen anonymously — you are never told who, they ar
 you — under the same limits, no more than once a month in the normal case — if a request fails with
 nothing generated, a limited number of retries follows, capped at 6 attempts in any 24-hour period
 (in rare crash cases an attempt that reached Anthropic may be retried within that same cap), then
-the full month's wait applies.</strong> In all cases Anthropic receives <strong>no account identity</strong> — not your
+the full month's wait applies.</strong> <strong>Fourth and fifth, poppdAI's reads of your own ratings: the
+"Will I like this?" button on a movie page (only when you tap it, up to five times a day), and a
+background read of your recommendations that runs shortly after you create an account and then at
+most a few times a day while you use the app (you see "poppdAI is reading your list" while it
+runs). Both send the model your rated movie titles with their release years and how you rated
+them (excluding any rating you have hidden), poppd's own descriptive tags for the films in
+question, and the movies being judged; the model returns a rating-level estimate and a short
+reason that poppd blends into your match scores.</strong> In all cases Anthropic receives <strong>no account identity</strong> — not your
 name, not your email, not your username — and we send nothing else. Anthropic's API terms state that
 data sent this way is not
 used to train its models.</p>
