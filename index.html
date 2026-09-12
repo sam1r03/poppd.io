@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>poppd: Find Movies You'll Love</title>
-<meta name="description" content="Every movie site shows everyone the same score. poppd shows you yours: a match score built from your ratings and people who share your taste, with the reason why. Free on iPhone.">
+<meta name="description" content="Every movie site shows everyone the same score. poppd shows you yours: a match score built from your ratings and people who share your taste, with the reason why. Coming soon to iPhone.">
 <meta property="og:title" content="poppd: Find Movies You'll Love">
-<meta property="og:description" content="The same movie. A different score for everyone. Not what everyone likes. What you'll like. Free on iPhone.">
+<meta property="og:description" content="The same movie. A different score for everyone. Not what everyone likes. What you'll like. Coming soon to iPhone.">
 <meta property="og:image" content="https://poppd.io/assets/01-home.jpg">
 <meta property="og:url" content="https://poppd.io/">
 <meta name="twitter:card" content="summary_large_image">
@@ -26,6 +26,15 @@
   .badge { display:inline-block; line-height:0; }
   .badge img { height:52px; width:auto; }
   .fine { font-size:.85rem; color:var(--muted); margin:.9rem 0 0; }
+  .notify h2 { font-size:1.1rem; margin:0 0 .7rem; }
+  .notify .row { display:flex; flex-wrap:wrap; gap:.5rem; max-width:34rem; }
+  .notify input { flex:1 1 14rem; min-height:48px; padding:.6rem .9rem; font:inherit; font-size:1rem; color:var(--ink); background:#161412; border:1px solid var(--line); border-radius:12px; }
+  .notify input:focus-visible, .notify button:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+  .notify button { flex:0 0 auto; min-height:48px; padding:.6rem 1.2rem; font:inherit; font-size:1rem; font-weight:600; color:#0D0D0D; background:var(--gold); border:0; border-radius:12px; cursor:pointer; }
+  .notify button[disabled] { opacity:.6; cursor:default; }
+  .notify .fine.ok { color:var(--gold); }
+  .notify .fine.err { color:#f0a48a; }
+  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   .shots { display:grid; grid-template-columns:repeat(3, 1fr); gap:.75rem; align-items:end; }
   .shots img { width:100%; height:auto; border-radius:18px; border:1px solid var(--line); display:block; }
   .shots img:nth-child(2) { transform:translateY(-14px); }
@@ -73,8 +82,15 @@
       <img class="wordmark" src="/assets/wordmark.png" alt="poppd" width="800" height="291">
       <h1>The same movie.<br><em>A different score for everyone.</em></h1>
       <p class="lede">Every movie site shows you one number for everyone. poppd shows you yours: a match score built from your ratings and the people who share your taste, with the reason underneath. Not what everyone likes. What you'll like.</p>
-      <a class="badge" href="/get?ct=site&amp;mt=8" aria-label="Download poppd on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="250" height="83"></a>
-      <p class="fine">Free on iPhone. Rate ten movies before you even make an account.</p>
+      <form class="notify" id="notify" aria-labelledby="notify-h">
+        <h2 id="notify-h">Coming soon to iPhone. Be first in.</h2>
+        <div class="row">
+          <label class="sr" for="notify-email">Email address</label>
+          <input id="notify-email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
+          <button type="submit">Tell me when it's out</button>
+        </div>
+        <p class="fine" id="notify-msg" role="status" aria-live="polite">One email when poppd launches, then we delete your address. Free, no account needed to start rating.</p>
+      </form>
     </div>
     <div class="shots" aria-label="Screenshots of poppd">
       <img src="/assets/02-rate-tab.jpg" alt="Rating a movie on the five-level popcorn scale" loading="lazy">
@@ -118,5 +134,30 @@
     <p>© 2026 Sami Rehman</p>
   </footer>
 </main>
+<script>
+  // Write-only insert into the launch_waitlist table (migration 20260912010000 in the app repo).
+  // The publishable key is public by design; the table grants anon INSERT on (email, source) only.
+  (function () {
+    var form = document.getElementById('notify'), msg = document.getElementById('notify-msg'),
+        input = document.getElementById('notify-email'), btn = form.querySelector('button');
+    function say(t, cls) { msg.textContent = t; msg.className = 'fine ' + (cls || ''); }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = input.value.trim().toLowerCase();
+      if (!input.checkValidity()) { say('That doesn\'t look like an email address.', 'err'); return; }
+      btn.disabled = true;
+      fetch('https://ddyfihwrfmtopqmcaswu.supabase.co/rest/v1/launch_waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Prefer': 'return=minimal',
+                   'apikey': 'sb_publishable_bKt9ZyeTVLFN0ydpzjO1sg_6OfU5C8x' },
+        body: JSON.stringify({ email: email, source: new URLSearchParams(location.search).get('ct') || 'site' })
+      }).then(function (r) {
+        if (r.status === 201) { say('You\'re on the list. We\'ll email you once, on launch day.', 'ok'); input.value = ''; }
+        else if (r.status === 409) { say('You\'re already on the list.', 'ok'); }
+        else { say('Something went wrong. Try again in a minute.', 'err'); btn.disabled = false; }
+      }).catch(function () { say('No connection. Try again in a minute.', 'err'); btn.disabled = false; });
+    });
+  })();
+</script>
 </body>
 </html>
