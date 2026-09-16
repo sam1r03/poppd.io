@@ -24,7 +24,7 @@
 <main>
 <nav><a href="/">poppd</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></nav>
 <h1>poppd — Privacy Policy</h1>
-<p><strong>Effective: 12 September 2026</strong></p>
+<p><strong>Effective: 17 September 2026</strong></p>
 <p>This page describes what the app actually does today, in plain language rather than boilerplate.
 Questions about anything here: <strong>privacy@poppd.io</strong>.</p>
 <hr />
@@ -39,7 +39,12 @@ requests: <strong>privacy@poppd.io</strong>.</p>
 <li><strong>Account identity</strong> — your email address and the password you set, or — if you use <strong>Sign in
   with Apple</strong> — the identifier Apple returns for your Apple ID and the email address you chose to
   share with us. If you chose Apple's "Hide My Email", that address is Apple's private relay
-  address, and it is what we hold. An account created with Apple has no poppd password.</li>
+  address, and it is what we hold. An account created with Apple has no poppd password. If you use
+  <strong>Sign in with Google</strong>, Google tells us the identifier for your Google account, its email
+  address, and the name and profile picture link on that Google account. Our sign-in service
+  (Supabase, §7.1) stores the name and picture link automatically; the app does not read, show or
+  use them, and they are deleted with your account. An account created with Google has no poppd
+  password.</li>
 <li><strong>Profile</strong> — your username, an optional display name, an optional profile photo, and an
   optional short bio.</li>
 <li><strong>Launch list (website only)</strong> — if you type your email address into the "tell me when it's
@@ -320,10 +325,25 @@ on iPhone only: on Android the app cannot obtain a push token today, so no token
 nothing is sent. (If Android delivery ships it will use Google's Firebase Cloud Messaging, and
 this section will name it.) If Expo tells us a device can no longer receive notifications, we
 delete its token.</p>
+<p><strong>7.10 Google — sign-in.</strong></p>
+<p>If you choose <em>Continue with Google</em>, Google confirms who you are and sends us a signed sign-in
+token carrying the details listed in §2. We ask only for your basic profile and email address: we
+get no access to your Gmail, contacts, files or anything else in your Google account, and we keep
+no Google password or long-lived Google credential. Your Google account itself is governed by
+Google's own privacy policy. You can remove poppd from your Google account at any time at
+<em>myaccount.google.com → Security → Third-party connections</em>; that stops future Google sign-ins
+but does not delete your poppd account.</p>
 <h2>8. Deleting your account</h2>
 <p>You can delete your account from Settings. If you have not signed in recently, you will be asked to
 sign in again first, because it cannot be undone — for an account created with Sign in with Apple,
-that means confirming with Apple again.</p>
+that means confirming with Apple again, and for one created with Sign in with Google, choosing your
+Google account again. If Google cannot be used on your device, you can confirm with your poppd
+password instead if your account has one, or ask us to delete it at
+<a href="/delete-account">poppd.io/delete-account</a>.</p>
+<p><strong>If your account uses Sign in with Google</strong> and you confirmed with Google, once the deletion has gone through we also ask
+Google to remove poppd from your Google account's third-party connections. This is a best-effort
+tidy-up: if it does not go through, your poppd account is still deleted, and you can remove poppd
+yourself in your Google account settings (§7.10).</p>
 <p><strong>If your account uses Sign in with Apple, deletion starts by disconnecting it from your Apple
 ID:</strong> we use the fresh confirmation from the Apple prompt to tell Apple to revoke poppd's sign-in
 grant, so the app no longer appears as connected to your Apple ID. Nothing Apple gives us in that
