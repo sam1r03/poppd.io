@@ -7,7 +7,10 @@
 <meta name="description" content="Every movie site shows everyone the same score. poppd shows you yours: a match score built from your ratings and people who share your taste, with the reason why. Free on iPhone.">
 <meta property="og:title" content="poppd: Find Movies You'll Love">
 <meta property="og:description" content="The same movie. A different score for everyone. Not what everyone likes. What you'll like. Free on iPhone.">
-<meta property="og:image" content="https://poppd.io/assets/01-home.jpg">
+<meta property="og:image" content="https://poppd.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="poppd: The same movie. A different score for everyone.">
 <meta property="og:url" content="https://poppd.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="apple-itunes-app" content="app-id=6799650743">
@@ -16,6 +19,7 @@
   :root { color-scheme: dark; --bg:#0D0D0D; --ink:#f5f0e8; --muted:#b8b0a4; --gold:#e8c579; --line:#2a2620; }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system, system-ui, "Segoe UI", sans-serif; line-height:1.5; }
+  ::selection { background:rgba(232,197,121,.35); color:var(--ink); }
   main { max-width:1040px; margin:0 auto; padding:3.5rem 1.25rem 2rem; }
   .hero { display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:center; }
   @media (min-width:820px) { .hero { grid-template-columns:1.1fr 1fr; gap:3rem; } }
@@ -23,13 +27,15 @@
   h1 { font-size:clamp(2.1rem, 5vw, 3.2rem); line-height:1.08; margin:1.6rem 0 .8rem; letter-spacing:-.01em; text-wrap:balance; }
   h1 em { font-style:normal; color:var(--gold); }
   .lede { font-size:1.15rem; color:var(--muted); margin:0 0 1.6rem; max-width:34rem; }
-  .badge { display:inline-block; line-height:0; }
+  .badge { display:inline-block; line-height:0; border-radius:10px; transition:transform 160ms ease-out; }
+  .badge:active { transform:scale(.97); }
+  .badge:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
   .badge img { height:52px; width:auto; }
-  .fine { font-size:.85rem; color:var(--muted); margin:.9rem 0 0; }
-  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
-  .shots { display:grid; grid-template-columns:repeat(3, 1fr); gap:.75rem; align-items:end; }
-  .shots img { width:100%; height:auto; border-radius:18px; border:1px solid var(--line); display:block; }
-  .shots img:nth-child(2) { transform:translateY(-14px); }
+  .fine { font-size:1rem; color:var(--ink); margin:1rem 0 0; }
+  .shot { margin:0; max-width:min(340px, 78vw); justify-self:center; }
+  .shot .crop { max-height:560px; overflow:hidden; border-radius:22px; border:1px solid var(--line); border-bottom:0; -webkit-mask-image:linear-gradient(#000 78%, transparent); mask-image:linear-gradient(#000 78%, transparent); }
+  .shot img { width:100%; height:auto; display:block; }
+  .shot figcaption { font-size:.85rem; color:var(--muted); margin-top:.6rem; text-align:center; }
   .features { display:grid; grid-template-columns:1fr; gap:1.25rem 2rem; margin:3rem 0 0; padding-top:2.5rem; border-top:1px solid var(--line); }
   @media (min-width:640px) { .features { grid-template-columns:repeat(2, 1fr); } }
   @media (min-width:960px) { .features { grid-template-columns:repeat(4, 1fr); } }
@@ -39,18 +45,20 @@
   .scale { margin:4rem 0 0; padding:2.5rem 0 0; border-top:1px solid var(--line); text-align:center; }
   .scale h2 { font-size:1.6rem; margin:0 0 .4rem; letter-spacing:-.01em; }
   .scale p { color:var(--muted); margin:0 auto 1.8rem; max-width:34rem; }
-  .kernels { display:flex; justify-content:center; gap:.5rem; flex-wrap:wrap; }
-  .kernels figure { margin:0; width:clamp(88px, 16vw, 150px); }
-  .kernels img { width:100%; height:auto; display:block; transition:transform .25s ease; }
-  .kernels figure:hover img { transform:translateY(-6px) scale(1.06); }
-  .kernels figcaption { font-size:.85rem; color:var(--muted); margin-top:.4rem; }
+  .kernels { display:flex; justify-content:center; gap:clamp(.35rem, 1.2vw, .75rem); }
+  .kernels figure { margin:0; width:clamp(52px, 16vw, 150px); }
+  .kernels img { width:100%; height:auto; display:block; transition:transform 200ms ease; }
+  @media (hover:hover) and (pointer:fine) { .kernels figure:hover img { transform:translateY(-6px) scale(1.06); } }
+  .kernels figcaption { font-size:clamp(.68rem, 2vw, .85rem); color:var(--muted); margin-top:.4rem; }
   .kernels figure:last-child figcaption { color:var(--gold); }
   .ai { margin:4rem 0 0; padding:2.5rem 1.5rem; border:1px solid var(--line); border-radius:22px; display:grid; grid-template-columns:1fr; gap:1.5rem; align-items:center;
         background:radial-gradient(60% 120% at 12% 50%, rgba(232,197,121,.16), transparent 60%), #121110; }
   @media (min-width:640px) { .ai { grid-template-columns:auto 1fr; gap:2rem; padding:2.5rem 2.5rem; } }
-  .orb { width:clamp(96px, 14vw, 140px); height:auto; filter:drop-shadow(0 0 28px rgba(232,197,121,.45)); }
-  @media (prefers-reduced-motion: no-preference) { .orb { animation:breathe 4s ease-in-out infinite; } }
-  @keyframes breathe { 0%,100% { filter:drop-shadow(0 0 22px rgba(232,197,121,.35)); } 50% { filter:drop-shadow(0 0 40px rgba(232,197,121,.6)); } }
+  .orb { position:relative; display:block; width:clamp(96px, 14vw, 140px); }
+  .orb::before { content:""; position:absolute; inset:-30%; border-radius:50%; background:radial-gradient(circle, rgba(232,197,121,.55), transparent 65%); opacity:.6; }
+  .orb img { position:relative; width:100%; height:auto; display:block; }
+  @media (prefers-reduced-motion: no-preference) { .orb::before { animation:breathe 4s ease-in-out infinite; } }
+  @keyframes breathe { 0%,100% { opacity:.45; transform:scale(.92); } 50% { opacity:.9; transform:scale(1.06); } }
   .ai .k { color:var(--gold); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:.45rem; }
   .ai h2 { font-size:1.6rem; margin:0 0 .6rem; letter-spacing:-.01em; }
   .ai h2 b { color:var(--gold); font-weight:700; }
@@ -60,6 +68,9 @@
   .ai .more { margin:1.1rem 0 0; }
   .ai .more a { color:var(--gold); text-decoration:none; font-weight:600; }
   .ai .more a:hover { text-decoration:underline; }
+  .cta { margin:4rem 0 0; padding-top:2.5rem; border-top:1px solid var(--line); text-align:center; }
+  .cta h2 { font-size:clamp(1.5rem, 3vw, 2rem); margin:0 0 1.4rem; letter-spacing:-.01em; text-wrap:balance; }
+  .cta .fine { font-size:.9rem; color:var(--muted); }
   footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
   footer nav { margin-bottom:.8rem; }
   footer a { color:var(--gold); text-decoration:none; }
@@ -73,15 +84,11 @@
     <div>
       <img class="wordmark" src="/assets/wordmark.png" alt="poppd" width="800" height="291">
       <h1>The same movie.<br><em>A different score for everyone.</em></h1>
-      <p class="lede">Every movie site shows you one number for everyone. poppd shows you yours: a match score built from your ratings and the people who share your taste, with the reason underneath. Not what everyone likes. What you'll like.</p>
+      <p class="lede">Every movie site shows you one number for everyone. poppd shows you yours: a match score built from your ratings and the people who share your taste, with the reason underneath.</p>
       <a class="badge" href="/get?ct=site&amp;mt=8" aria-label="Download poppd on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="250" height="83"></a>
       <p class="fine">Free on iPhone. Rate ten movies before you even make an account.</p>
     </div>
-    <div class="shots" aria-label="Screenshots of poppd">
-      <img src="/assets/02-rate-tab.jpg" alt="Rating a movie on the five-level popcorn scale" loading="lazy">
-      <img src="/assets/01-home.jpg" alt="Home screen showing personalised top picks" loading="lazy">
-      <img src="/assets/03-profile.jpg" alt="Profile showing a taste identity and recent ratings" loading="lazy">
-    </div>
+    <figure class="shot"><div class="crop"><img src="/assets/hiw-verdict.jpg" alt="poppdAI's read on Training Day in poppd: You'd probably rate this Burst, high confidence, with three reasons in plain English" width="552" height="1200" fetchpriority="high"></div><figcaption>One movie. Your score, and why.</figcaption></figure>
   </section>
 
   <section class="scale" aria-labelledby="scale-h">
@@ -97,7 +104,7 @@
   </section>
 
   <section class="ai" aria-labelledby="ai-h">
-    <img class="orb" src="/assets/ai-orb.png" alt="" width="256" height="256">
+    <span class="orb"><img src="/assets/ai-orb.png" alt="" width="256" height="256"></span>
     <div>
       <h2 id="ai-h">Twenty ratings in, <b>poppdAI</b> reads you.</h2>
       <p>It turns your ratings into a taste profile written in plain English, finds movies from a mood or a title you name, and hands you a fresh set of top picks every couple of weeks. Open any movie and ask <b>Will I like it?</b>: you get the popcorn level you'd probably give it, how sure we are, and the reasons why. The ranking underneath stays honest: your ratings and people like you, not a black box.</p>
@@ -111,6 +118,12 @@
     <div><span class="k">Discover</span><h2>A score and a reason</h2><p>"Because you loved Arrival" beats "trending now". Every pick shows why it's yours.</p></div>
     <div><span class="k">People</span><h2>Find your taste twin</h2><p>Real people whose ratings line up with yours: what you both loved, and where you fought.</p></div>
     <div><span class="k">Share</span><h2>Post your taste to Stories</h2><p>One tap turns your taste identity, your favourite movies or a finished tier board into a card sized for Instagram Stories. Show your friends, then argue.</p></div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-h">
+    <h2 id="cta-h">Rate ten movies. See what you're most likely to enjoy next.</h2>
+    <a class="badge" href="/get?ct=site-end&amp;mt=8" aria-label="Download poppd on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="250" height="83"></a>
+    <p class="fine">Free on iPhone. No account needed to start.</p>
   </section>
 
   <footer>
