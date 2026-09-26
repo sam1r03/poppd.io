@@ -53,14 +53,16 @@
   .kernels figure:last-child figcaption { color:var(--gold); }
   .ai { margin:4rem 0 0; padding:2.5rem 1.5rem; border:1px solid var(--line); border-radius:22px; display:grid; grid-template-columns:1fr; gap:1.5rem; align-items:center;
         background:radial-gradient(60% 120% at 12% 50%, rgba(232,197,121,.16), transparent 60%), #121110; }
-  @media (min-width:640px) { .ai { grid-template-columns:auto 1fr; gap:2rem; padding:2.5rem 2.5rem; } }
-  .orb { position:relative; display:block; width:clamp(96px, 14vw, 140px); }
-  .orb::before { content:""; position:absolute; inset:-30%; border-radius:50%; background:radial-gradient(circle, rgba(232,197,121,.55), transparent 65%); opacity:.6; }
-  .orb img { position:relative; width:100%; height:auto; display:block; }
-  @media (prefers-reduced-motion: no-preference) { .orb::before { animation:breathe 4s ease-in-out infinite; } }
-  @keyframes breathe { 0%,100% { opacity:.45; transform:scale(.92); } 50% { opacity:.9; transform:scale(1.06); } }
+  @media (min-width:760px) { .ai { grid-template-columns:1.2fr 1fr; gap:2.5rem; padding:2.5rem 2.5rem; } }
+  .orbline { display:flex; align-items:center; gap:.8rem; margin-bottom:.6rem; }
+  .orbline img { width:44px; height:44px; flex:none; filter:drop-shadow(0 0 18px rgba(232,197,121,.45)); }
+  .taste { margin:0; width:100%; max-width:320px; justify-self:center; }
+  @media (min-width:760px) { .taste { justify-self:end; } }
+  .taste .crop { aspect-ratio:1/1.05; overflow:hidden; border-radius:18px; border:1px solid var(--line); }
+  .taste .crop img { width:100%; height:auto; display:block; transform:translateY(-17%); }
+  .taste figcaption { font-size:.85rem; color:var(--muted); margin-top:.6rem; text-align:center; }
   .ai .k { color:var(--gold); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:.45rem; }
-  .ai h2 { font-size:1.6rem; margin:0 0 .6rem; letter-spacing:-.01em; }
+  .ai h2 { font-size:1.6rem; margin:0; letter-spacing:-.01em; text-wrap:balance; }
   .ai h2 b { color:var(--gold); font-weight:700; }
   .ai p { margin:0; color:var(--muted); max-width:40rem; }
   .ai ul { margin:.9rem 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:.5rem; }
@@ -104,13 +106,13 @@
   </section>
 
   <section class="ai" aria-labelledby="ai-h">
-    <span class="orb"><img src="/assets/ai-orb.png" alt="" width="256" height="256"></span>
     <div>
-      <h2 id="ai-h"><b>poppdAI</b> reads you, in plain English.</h2>
+      <div class="orbline"><img src="/assets/ai-orb.png" alt="" width="256" height="256"><h2 id="ai-h"><b>poppdAI</b> reads you, in plain English.</h2></div>
       <p>Twenty ratings in, it turns them into a taste profile, finds movies from a mood or a title you name, and hands you a fresh set of top picks every couple of weeks. Open any movie and ask <b>Will I like it?</b>: you get the popcorn level you'd probably give it, how sure we are, and the reasons why. The ranking underneath stays honest: your ratings and people like you, not a black box.</p>
       <ul><li>Your taste, in words</li><li>Will I like it?</li><li>AI search by mood or movie</li><li>Top picks, refreshed</li></ul>
       <p class="more"><a href="/how-it-works/">How poppd knows what you'll like →</a></p>
     </div>
+    <figure class="taste"><div class="crop"><img src="/assets/03-profile.jpg" alt="A poppd profile with the poppdAI taste breakdown: you crave dark, tense thrills over warm fuzzies, explained in a plain-English paragraph" width="552" height="1200" loading="lazy"></div><figcaption>Your taste, as poppdAI wrote it.</figcaption></figure>
   </section>
 
   <section class="features">
