@@ -7,7 +7,10 @@
 <meta name="description" content="poppd learns how you rate, not how everyone rates: a taste profile built from your popcorn ratings, calibrated to you, backed by real people who share your taste, and a straight answer from poppdAI on any movie.">
 <meta property="og:title" content="How poppd knows what you'll like">
 <meta property="og:description" content="It learns how you rate, not how everyone rates.">
-<meta property="og:image" content="https://poppd.io/assets/01-home.jpg">
+<meta property="og:image" content="https://poppd.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="poppd: The same movie. A different score for everyone.">
 <meta property="og:url" content="https://poppd.io/how-it-works/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="apple-itunes-app" content="app-id=6799650743">
@@ -18,16 +21,17 @@
   body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system, system-ui, "Segoe UI", sans-serif; line-height:1.55; }
   main { max-width:1040px; margin:0 auto; padding:2.5rem 1.25rem 2rem; }
   .top { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:2.5rem; }
-  .top a.home { color:var(--muted); text-decoration:none; font-size:.95rem; }
+  .top a.home { color:var(--muted); text-decoration:none; font-size:.95rem; white-space:nowrap; }
   .top a.home:hover { color:var(--ink); }
   .wordmark { width:min(150px, 40%); height:auto; display:block; }
   .k { color:var(--gold); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:.45rem; }
   h1 { font-size:clamp(2rem, 4.6vw, 3rem); line-height:1.08; margin:0 0 .8rem; letter-spacing:-.01em; text-wrap:balance; max-width:22ch; }
   h1 em { font-style:normal; color:var(--gold); }
   .lede { font-size:1.15rem; color:var(--muted); margin:0 0 1.2rem; max-width:36rem; }
-  .badge { display:inline-block; line-height:0; }
+  .badge { display:inline-block; line-height:0; border-radius:10px; transition:transform 160ms ease-out; }
+  .badge:active { transform:scale(.97); }
+  .badge:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
   .badge img { height:52px; width:auto; }
-  .notify-link { display:inline-block; min-height:48px; line-height:48px; padding:0 1.2rem; font-weight:600; color:#0D0D0D; background:var(--gold); border-radius:12px; text-decoration:none; }
   .step { display:grid; grid-template-columns:1fr; gap:1.5rem; align-items:center; margin:3.5rem 0 0; padding-top:2.5rem; border-top:1px solid var(--line); }
   @media (min-width:760px) { .step { grid-template-columns:1.15fr 1fr; gap:3rem; } .step.flip > .text { order:2; } }
   .step h2 { font-size:clamp(1.45rem, 2.6vw, 1.9rem); margin:0 0 .6rem; letter-spacing:-.01em; text-wrap:balance; }
@@ -47,10 +51,13 @@
   .cta { margin:3.5rem 0 0; padding-top:2.5rem; border-top:1px solid var(--line); text-align:center; }
   .cta h2 { font-size:clamp(1.6rem, 3.4vw, 2.2rem); margin:0 0 .5rem; letter-spacing:-.01em; text-wrap:balance; }
   .cta p { color:var(--muted); margin:0 auto 1.4rem; max-width:32rem; }
-  .fine { font-size:.85rem; color:var(--muted); margin:.9rem 0 0; }
+  .fine { font-size:1rem; color:var(--ink); margin:1rem 0 0; }
+  .cta .fine { font-size:.9rem; color:var(--muted); }
   footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
   footer nav { margin-bottom:.8rem; }
-  footer a { color:var(--muted); }
+  footer a { color:var(--gold); text-decoration:none; }
+  footer a:hover, footer a:focus-visible { text-decoration:underline; }
+  footer p { margin:.35rem 0; }
 </style>
 </head>
 <body>
@@ -64,7 +71,8 @@
     <span class="k">How it works</span>
     <h1>How poppd knows <em>what you'll like</em></h1>
     <p class="lede">It learns how you rate, not how everyone rates. Here's what happens between your first ten ratings and a recommendation you can trust.</p>
-    <a class="notify-link" href="/get?ct=how&amp;mt=8">Free on iPhone. Get the app →</a>
+    <a class="badge" href="/get?ct=how&amp;mt=8" aria-label="Download poppd on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="250" height="83"></a>
+    <p class="fine">Free on iPhone. Rate ten movies before you even make an account.</p>
   </section>
 
   <section class="step" aria-labelledby="s1">
@@ -74,7 +82,7 @@
       <p>Every film you rate on the popcorn scale teaches poppd something. Not just "liked it" or "didn't", but how strongly, which genres, which eras, whether you finished it.</p>
       <p>Ten ratings is enough to start. Fifty and it knows you well.</p>
     </div>
-    <figure class="shot phone"><img src="/assets/hiw-rate.jpg" alt="A movie page in poppd with the five-stage popcorn rating control: Not Worth the Popcorn, Underpopped, Popped, Burst, Popcorn Perfection" width="900" height="1956" loading="lazy"><figcaption>One tap, or press and hold. Five levels of popped.</figcaption></figure>
+    <figure class="shot phone"><img src="/assets/hiw-rate.jpg" alt="A movie page in poppd with the five-stage popcorn rating control: Unpopped, Cracked, Popped, Burst, Perfection" width="900" height="1956" loading="lazy"><figcaption>One tap, or press and hold. Five levels of popped.</figcaption></figure>
   </section>
 
   <section class="step flip" aria-labelledby="s2">
@@ -125,13 +133,14 @@
   <section class="cta">
     <h2>Rate ten films. See what you're most likely to enjoy next.</h2>
     <p>Free on iPhone. No streaming logins, no reviews to write, no algorithm you can't see.</p>
-    <a class="notify-link" href="/get?ct=how&amp;mt=8">Free on iPhone. Get the app →</a>
+    <a class="badge" href="/get?ct=how-end&amp;mt=8" aria-label="Download poppd on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="250" height="83"></a>
     <p class="fine">iPhone now. Android later.</p>
   </section>
 
   <footer>
     <nav><a href="/">Home</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/support">Support</a> · <a href="https://instagram.com/poppd.io">Instagram</a></nav>
-    <p>This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+    <p>This product uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</p>
+    <p>© 2026 Sami Rehman</p>
   </footer>
 </main>
 </body>
