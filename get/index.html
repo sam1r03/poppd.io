@@ -2,13 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>poppd on the App Store</title>
+<meta property="og:title" content="poppd: Find Movies You’ll Love">
+<meta property="og:description" content="Not what everyone likes. What you’ll like. Free on iPhone.">
+<meta property="og:url" content="https://poppd.io/get/">
+<meta property="og:type" content="website">
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#100E0B;color:#F7F3EC;font-family:-apple-system,system-ui,sans-serif;text-align:center}
+  main{padding:32px}
+  a.btn{display:inline-block;margin-top:20px;padding:14px 28px;border-radius:999px;background:#F1B43E;color:#100E0B;font-weight:700;text-decoration:none}
+</style>
 <script>
-  // Pass campaign parameters (?pt=…&ct=…&mt=8) straight through to the App Store.
+  // Real visitors go straight to the App Store with the campaign parameters (?pt=…&ct=…&mt=8)
+  // passed through. This is script-only on purpose: ad-platform crawlers (which do not run
+  // scripts) must see a normal web page here, or they classify the link as an app URL.
   location.replace('https://apps.apple.com/app/id6799650743' + location.search);
 </script>
-<meta http-equiv="refresh" content="0; url=https://apps.apple.com/app/id6799650743">
 </head>
-<body><p>Opening the App Store… <a href="https://apps.apple.com/app/id6799650743">poppd on the App Store</a></p></body>
+<body><main>
+  <h1>poppd</h1>
+  <p>Not what everyone likes. What you’ll like.</p>
+  <a class="btn" href="https://apps.apple.com/app/id6799650743">Get it on the App Store</a>
+</main></body>
 </html>
