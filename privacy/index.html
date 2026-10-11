@@ -24,7 +24,7 @@
 <main>
 <nav><a href="/">poppd</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></nav>
 <h1>poppd — Privacy Policy</h1>
-<p><strong>Effective: 4 October 2026</strong></p>
+<p><strong>Effective: 10 October 2026</strong></p>
 <p>This page describes what the app actually does today, in plain language rather than boilerplate.
 Questions about anything here: <strong>privacy@poppd.io</strong>.</p>
 <hr />
@@ -92,10 +92,14 @@ requests: <strong>privacy@poppd.io</strong>.</p>
 </ul>
 <p><strong>We do not collect your location.</strong> No precise location, and we switch off our analytics
 provider's IP-based location lookup. We do not ask for your date of birth, we do not read your
-contacts, and we do not send marketing notifications. The app does send one kind of optional
-product notification — a movie was added to a collection you have placed movies in — and only if
-you turned notifications on. The switch is your device's notification permission: turning it off
-stops them, and the app deletes the stored token the next time it runs.</p>
+contacts, and we do not send marketing notifications. The app can send eight kinds of optional
+product notifications: activity from people you follow; your Will I like this? questions refreshing,
+or a poppdAI read becoming ready for a film you asked about; your recommendations being updated; a
+movie added to a collection you have placed movies in; your taste profile being updated; a check-in
+asking whether you watched a film you saved, asked about or asked to be reminded about; films out
+this week near you that poppd picked for you. Each kind has its own switch in the app's Settings.
+The master switch is your device's notification permission: turning it off stops them all, and the
+app deletes the stored token the next time it runs.</p>
 <p><strong>Your taste identity is built only from film-taste signals.</strong> Which identity you get is decided
 by fixed rules from the list above — an AI model does not make that decision — so it cannot and
 does not infer anything about your religion, ethnicity, politics, sexuality, health or any other
@@ -141,8 +145,7 @@ Explanations only ever give counts, never names.</p>
   users'.</li>
 <li>To show your profile to other people, within the limits you set.</li>
 <li>To keep the service working and safe — spotting abuse, rating manipulation and fake accounts.</li>
-<li>To tell you when a movie is added to a collection you have placed movies in, if you turned
-  notifications on (§7.9).</li>
+<li>To send the notifications you have switched on (§7.9).</li>
 <li>To understand how the product is used, in aggregate (see §7).</li>
 </ul>
 <p>We do not sell your data, and we do not use it for advertising or profiling outside the product.</p>
@@ -201,7 +204,7 @@ never present it as one.</p>
 </tr>
 <tr>
 <td>Notification records</td>
-<td>When a movie is added to a collection you have placed movies in, we record that a notification is owed to your account — which collection, how many movies, and what happened to it (sent, skipped because you had notifications off, expired unsent, or failed). We keep that record for as long as your account exists, and it is deleted with your account</td>
+<td>We record that a notification is owed to your account — which kind, the film or collection it concerns, and what happened to it: sent, skipped because you had it switched off, expired unsent, or failed. <strong>30 days after the notification is resolved</strong>, and deleted with your account</td>
 </tr>
 <tr>
 <td>Crash reports</td>
@@ -225,8 +228,7 @@ change that choice yourself.</strong> If you restore the film, or replace the pe
 choice stands.</p>
 <p>We also keep short-lived technical logs of our own background jobs — for example, whether the
 nightly job that refreshes recommendations succeeded for an account. These record what the system
-did, not what you did, and are deleted after 30 days. The notification record described in the
-table above is the exception: it is kept for as long as your account exists.</p>
+did, not what you did, and are deleted after 30 days.</p>
 <h2>7. Who else is involved</h2>
 <p>We use a small number of companies to run the service.</p>
 <p><strong>7.1 Supabase</strong> — hosts our database, authentication and file storage. Everything in §2 is
@@ -323,9 +325,12 @@ used to train its models.</p>
 <p><strong>7.9 Expo and Apple — push notifications.</strong></p>
 <p>If you turn notifications on, the notifications we send travel through <strong>Expo's push notification
 service</strong> and then through <strong>Apple Push Notification service (APNs)</strong> to your device. Those two
-services receive your device's push token and the content of the notification — today that is the
-name of a collection, how many movies were added to it, and the in-app route a tap opens; never
-your ratings, your username or anything about another user. Notifications are currently delivered
+services receive your device's push token and the content of the notification. A notification may
+carry the title of a film you saved, asked about or asked to be reminded about; the title of a
+film out this week that poppd picked for you; a collection name and how many movies were added to
+it; or the username of one person you follow together with how many other people you follow were
+active — and the in-app screen a tap opens. Never your ratings, your scores, or anything about a
+user you do not follow. Notifications are currently delivered
 on iPhone only: on Android the app cannot obtain a push token today, so no token is stored and
 nothing is sent. (If Android delivery ships it will use Google's Firebase Cloud Messaging, and
 this section will name it.) If Expo tells us a device can no longer receive notifications, we
@@ -415,8 +420,8 @@ other side of that coin: deletion is final, and we could not restore your accoun
 <li>Edit your bio and profile photo.</li>
 <li>Report an account.</li>
 <li>Dismiss or postpone a recommendation.</li>
-<li>Turn notifications on or off — the switch is your device's notification permission, and the
-  app's settings screen links straight to it.</li>
+<li>Turn notifications on or off — per kind in the app's Settings, or all of them with your
+  device's notification permission.</li>
 <li>Hide your taste identity — this also stops the AI-worded taste description being generated
   (§7.8).</li>
 <li>Delete your account.</li>
